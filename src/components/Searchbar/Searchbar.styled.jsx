@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import reactIcon from "../../utils/react.svg"
+import reactIcon from "../../utils/reactHook.svg"
+
 
 export const Header = styled.header`
     top: 0;
