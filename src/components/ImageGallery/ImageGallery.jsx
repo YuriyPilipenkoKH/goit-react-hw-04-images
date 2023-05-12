@@ -1,26 +1,20 @@
 import PropTypes from 'prop-types';
-import { ImageGalleryItem } from "components/ImageGalleryItem/ImageGalleryItem"
-import React, { Component } from 'react'
+import  ImageGalleryItem  from "components/ImageGalleryItem/ImageGalleryItem"
 import { GalleryList } from "./ImageGallery.styled"
 
 
-export  class ImageGallery extends Component {
-    state = {
-        showModal: false,
-        large: null,
-    }
-    
+const ImageGallery = ({onClickImg,images}) =>{
 
-  render() {
+
   
     return (
 
         <>
          <GalleryList className="gallery">
-     {this.props.images.map(img => (
+     {images.map(img => (
       
         <ImageGalleryItem  
-        onClickImg ={this.props.onClickImg}
+        onClickImg ={onClickImg}
         key ={img.id}
         item = {img}
         id={img.id}
@@ -34,7 +28,7 @@ export  class ImageGallery extends Component {
         
     )
   }
-}
+export default ImageGallery
 
 ImageGallery.propTypes = {
   onClickIMg: PropTypes.func,

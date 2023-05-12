@@ -1,23 +1,22 @@
-import React, { Component } from 'react'
+
 import PropTypes from 'prop-types';
 import { GalleryItem } from './ImageGalleryItem.styled'
 
-export  class ImageGalleryItem extends Component {
+const ImageGalleryItem = ({onClickImg,item}) => {
 
-  render() {
-    const {id, webformatURL, largeImageURL}  = this.props.item
+    const {id, webformatURL, largeImageURL}  = item
     return (
         <GalleryItem key ={id} className="gallery-item">
         <img
-        onClick = {() => this.props.onClickImg(largeImageURL)}
+        onClick = {() => onClickImg(largeImageURL)}
          id ={id} 
         src={webformatURL} 
         alt={largeImageURL} 
        />
         </GalleryItem>
     )
-  }
 }
+export default ImageGalleryItem
 
 ImageGalleryItem.propTypes = {
   onClickImg: PropTypes.func,
