@@ -87,7 +87,7 @@ const App = () => {
       <Searchbar onSubmit={handleSubmit} />
       <ImageGallery onClickImg={onClickImg} images={items} />
 
-      {showBtn && (
+      {showBtn  && (
         <Button onClick={onLoadMore}>
           {iconLoader}
           Load More
