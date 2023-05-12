@@ -17,7 +17,7 @@ const ImageGallery = ({onClickImg,images}) =>{
         onClickImg ={onClickImg}
         key ={img.id}
         item = {img}
-        id={img.id}
+        // id={img.id}
         />
         ) )}
        

@@ -20,7 +20,7 @@ export default ImageGalleryItem
 
 ImageGalleryItem.propTypes = {
   onClickImg: PropTypes.func,
-  id: PropTypes.number.isRequired,
+
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
     largeImageURL: PropTypes.string.isRequired,

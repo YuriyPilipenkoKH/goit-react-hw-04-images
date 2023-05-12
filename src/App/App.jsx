@@ -8,7 +8,7 @@ import { fetchCard } from 'servises/fetch';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
 import Modal from 'components/Modal/Modal';
 import Loader from 'components/Loader/Loader';
-import ToTopButton from 'components/ToTopButton/ToTopButton';
+// import ToTopButton from 'components/ToTopButton/ToTopButton';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -28,6 +28,7 @@ const App = () => {
         'The search string cannot be empty. Please specify your search query.'
       );
       setItems([]);
+      setShowBtn(false);
       return;
     }
 
@@ -98,7 +99,7 @@ const App = () => {
         <Modal onModalClose={onModalClose} picture={largeImgUrl} />
       )}
       {loading && <Loader />}
-      {showBtn && <ToTopButton />}
+      {/* {showBtn && <ToTopButton />} */}
 
       {error && <p>Error: {error.message}</p>}
     </Container>
