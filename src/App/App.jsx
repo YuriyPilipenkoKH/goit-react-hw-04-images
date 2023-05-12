@@ -3,7 +3,7 @@ import { Container } from 'components/Container/Container';
 import Notiflix from 'notiflix';
 import Button from 'components/Button/Button';
 import { iconLoader } from 'utils/svgIcons';
-import { Searchbar } from 'components/Searchbar/Searchbar';
+import Searchbar  from 'components/Searchbar/Searchbar';
 import { fetchCard } from 'servises/fetch';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
 import Modal from 'components/Modal/Modal';
