@@ -1,59 +1,54 @@
-import React, { Component } from 'react'
-import { createPortal } from 'react-dom'
+import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import { Overlay, ModalImg } from './Modal.styled'
+import { Overlay, ModalImg } from './Modal.styled';
 
+const modalRoot = document.querySelector('#modal-root');
 
-const modalRoot = document.querySelector('#modal-root')
-export  class Modal extends Component {
-    // state = {
-    //     showModal: this.props.showModal,
-        
-    // }
-
-    componentDidMount() {
-       
-        window.addEventListener('click', this.handleBackdropClick)
-        window.addEventListener('keydown', this.handleKeyDown)
-        document.body.style.overflow = 'hidden';
-      } 
-
-      componentWillUnmount() {
-       
-        window.removeEventListener('click', this.handleBackdropClick)
-        window.removeEventListener('keydown', this.handleKeyDown)
-        document.body.style.overflow = 'unset';
-      } 
-    
-      handleBackdropClick =(e) => {
-      
-        if( e.target === e.currentTarget ){
-          return this.props.onModalClose()   
-           }
+const Modal = ({ onModalClose, picture }) => {
+  useEffect(() => {
+    const handleBackdropClick = (e) => {
+      if (e.target === e.currentTarget) {
+       return onModalClose();
       }
+    };
 
+    const handleKeyDown = (e) => {
+      if (e.keyCode === 27) {
+       return onModalClose();
+      }
+    };
 
-      handleKeyDown =(e) => {
-          if(e.keyCode === 27  ){
-            return this.props.onModalClose()   
-             }
-        }
-      
+    const body = document.body;
+    body.style.overflow = 'hidden';
 
+    window.addEventListener('click', handleBackdropClick);
+    window.addEventListener('keydown', handleKeyDown);
 
-  render() {
-    return createPortal (
-        <Overlay onClick  ={this.handleBackdropClick} className="overlay">
-        <ModalImg className="modal">
-            <img src={this.props.picture} alt="#" />
-        </ModalImg>
-        </Overlay>
-      ,modalRoot
-    )
-  }
-}
+    return () => {
+      body.style.overflow = 'unset';
+      window.removeEventListener('click', handleBackdropClick);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onModalClose]);
+
+  const handlePictureClick = (e) => {
+    e.stopPropagation();
+  };
+
+  return createPortal(
+    <Overlay onClick={onModalClose} className="overlay">
+      <ModalImg className="modal">
+        <img src={picture} alt="#" onClick={handlePictureClick}/>
+      </ModalImg>
+    </Overlay>,
+    modalRoot
+  );
+};
 
 Modal.propTypes = {
-  onModalClose: PropTypes.func,
-  picture:  PropTypes.string.isRequired,
-}
+  onModalClose: PropTypes.func.isRequired,
+  picture: PropTypes.string.isRequired,
+};
+
+export default Modal;

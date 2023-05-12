@@ -6,7 +6,7 @@ import { iconLoader } from 'utils/svgIcons'
 import { Searchbar } from 'components/Searchbar/Searchbar'
 import {fetchCard} from 'servises/fetch'
 import  ImageGallery  from 'components/ImageGallery/ImageGallery'
-import { Modal } from 'components/Modal/Modal'
+import  Modal  from 'components/Modal/Modal'
 import Loader from 'components/Loader/Loader'
 import ToTopButton from 'components/ToTopButton/ToTopButton'
 
