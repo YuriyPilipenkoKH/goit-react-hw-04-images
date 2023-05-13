@@ -30,7 +30,7 @@ export const SearchForm = styled.form`
     & >input{
         min-width: 300px;
         outline: none;
-        padding: 12px;
+        padding: 12px 38px 12px 12px;
         font-size: 18px;
         border-radius: 8px;
         border: 3px solid transparent;

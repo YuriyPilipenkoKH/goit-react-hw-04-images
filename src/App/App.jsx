@@ -9,6 +9,7 @@ import ImageGallery from 'components/ImageGallery/ImageGallery';
 import Modal from 'components/Modal/Modal';
 import Loader from 'components/Loader/Loader';
 // import ToTopButton from 'components/ToTopButton/ToTopButton';
+import ToTopButton from 'components/ToTopButton/ToTopButtonClass';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -54,6 +55,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    console.log('useEffect');
     if (query === '') return;
 
     const fetchGallery = async () => {
@@ -74,13 +76,15 @@ const App = () => {
           );
         }
       } catch (error) {
-        Notiflix.Notify.failure('Sorry, Page not found. Please try again.');
+       
         setError(error);
         setLoading(false);
+        Notiflix.Notify.failure('Sorry, Page not found. Please try again.');
       }
     };
 
     fetchGallery();
+
   }, [query, page, perPage]);
 
   return (
@@ -99,7 +103,7 @@ const App = () => {
         <Modal onModalClose={onModalClose} picture={largeImgUrl} />
       )}
       {loading && <Loader />}
-      {/* {showBtn && <ToTopButton />} */}
+      {showBtn && <ToTopButton />}
 
       {error && <p>Error: {error.message}</p>}
     </Container>
